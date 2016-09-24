@@ -27,13 +27,13 @@ int RomanoArab(const char *rom_char)
 		
 		if(RomanoValido(rom_int, tam_s) == OK){
 			
-			/**   Realiza a soma correta dos valores, ja verificados.*/
+			/** Realiza a soma correta dos valores verificados.*/
 			for (i = 0; i < (tam_s-1); i++)
 			{		 
-				/**   Caso o proximo algarismo seja maior, subtraia.*/
+				/* Caso o próximo algarismo seja maior, subtrai.*/
 				if (rom_int[i] < rom_int[i + 1])
 					valor -= rom_int[i];
-				/**   Caso o proximo algarismo seja menor ou igual, some.*/
+				/* Caso o próximo algarismo seja menor ou igual, soma.*/
 				if (rom_int[i] >= rom_int[i + 1])
 					valor += rom_int[i];
 			} 
