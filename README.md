@@ -1,4 +1,4 @@
-# Tra2_MP
+# Trab2_MP
 Trabalho 2 da diciplina Métodos de Programação 2/2016 (UnB)
 
 Todos a documetação necessária se encontra nesse diretório.
