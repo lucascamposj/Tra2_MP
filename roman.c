@@ -2,6 +2,49 @@
 #include <string.h>
 #include "roman.h"
 
+/** @brief Realiza a soma e subtração correta de números romanos válidos 
+ * para transformá-los em algarismos arábicos.
+*/
+/** @return Número arábico correspondente ao número romano inserido.
+ *	@return -1, caso tenha sido verificado erro de formatação ou escrita do número romano.
+ */
+int RomanoArab(const char *rom_char)
+{
+	int rom_int[30]; /* Vetor que armazena os algarismos convertidos*/
+	int i;
+	int tam_s; /* Variável que armazena a quantidade de algarismos romanos inseridos*/
+	int valor = 0; /* Variável que representa o valor arábico final*/
+
+	tam_s = strlen(rom_char);
+
+	/**
+	 * Primeiramente, ocorre a verificação da validez dos números romanos inseridos.
+	 */
+	/** Utilizando as funções
+	 * 	ArabicoCorrespondente e RomanoValido.
+	 */
+	if(ArabCorrespondente(rom_char,rom_int, tam_s) == OK)
+		
+		if(RomanoValido(rom_int, tam_s) == OK){
+			
+			/**   Realiza a soma correta dos valores, ja verificados.*/
+			for (i = 0; i < (tam_s-1); i++)
+			{		 
+				/**   Caso o proximo algarismo seja maior, subtraia.*/
+				if (rom_int[i] < rom_int[i + 1])
+					valor -= rom_int[i];
+				/**   Caso o proximo algarismo seja menor ou igual, some.*/
+				if (rom_int[i] >= rom_int[i + 1])
+					valor += rom_int[i];
+			} 
+			valor += rom_int[tam_s-1];
+
+			return valor;
+		}
+	return -1;
+}
+
+
 /**
 * @brief Copia para um vetor de inteiros, os valores arábicos correspondentes a cada caracter.
 * Além de verificar caso algum deles não pertença ao conjunto de algarismos romanos.

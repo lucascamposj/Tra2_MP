@@ -104,6 +104,26 @@ TEST (RomanoValido, Subtracao)
 	EXPECT_EQ (OK, RomanoValido(vetor, 2));
 }
 
+/**@brief Testa o valor final, convertido, da função RomanoArab.*/
+/**Verifica a conversão final do número romano para arábico.
+ * Caso o número seja inválido, verifica se a função retorna -1
+ */
+
+TEST (RomanoArab, Conversao)
+{
+
+	EXPECT_EQ (4, RomanoArab("IV"));
+	EXPECT_EQ (8, RomanoArab("VIII"));
+	EXPECT_EQ (39, RomanoArab("XXXIX"));
+	EXPECT_EQ (248, RomanoArab("CCXLVIII"));
+	EXPECT_EQ (3519, RomanoArab("MMMDXIX"));
+
+	EXPECT_EQ (-1, RomanoArab("VX"));
+	EXPECT_EQ (-1, RomanoArab("XIIII"));
+	EXPECT_EQ (-1, RomanoArab("CCIC"));
+	EXPECT_EQ (-1, RomanoArab("MMDXIXD"));
+}
+
 int main(int argc, char **argv)
 {
 	::testing::InitGoogleTest(&argc, argv);
